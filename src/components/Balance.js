@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState';
 
 export const Balance = () => {
+
     const { transactions } = useContext(GlobalContext);
 
    // console.log(transactions)
@@ -9,6 +10,7 @@ export const Balance = () => {
     //console.log(total_amounts_list)
 
     var Total_final_Amount=0;
+    
     for(let amount of total_amounts_list){
         Total_final_Amount=Total_final_Amount+amount
     }

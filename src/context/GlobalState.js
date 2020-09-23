@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
-//create initial state like jason object
+//create initial state like json object
 const InitialState = {
     transactions: [
         // { id: 1, description: "Income 1", transactionAmount: 100 },
@@ -15,24 +15,25 @@ export const GlobalContext = createContext(InitialState)
 
 // creating provider for global context
 export const GlobalProvider = ({ children }) => {
-    
+
     const [state, dispatch] = useReducer(AppReducer, InitialState);
 
     function AddTransaction(newTransaction) {
         dispatch({
             type: 'ADD_TRANSACTION',
-            payload: newTransaction
+            payload: newTransaction // the new data which we want to save
         })
     }
-    
-    function DeleteTransaction(id){
+
+    function DeleteTransaction(id) {
         dispatch({
-            type:'DELETE_TRANSACTION',
-            payload:id
+            type: 'DELETE_TRANSACTION',
+            payload: id
         })
     }
+
     return (
-        
+
         <GlobalContext.Provider value={
             {
                 transactions: state.transactions,
